@@ -13,10 +13,6 @@ const _E = BigInt(65537);
  */
 
 /**
- * @typedef {PublicKey} PublicKey
- */
-
-/**
  * Generates a pair private, public key for the RSA cryptosystem.
  *
  * @param {number} [bitLength = 2048] - the bit length of the public modulo

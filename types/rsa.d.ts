@@ -1,5 +1,4 @@
 export function generateRandomKeys(bitLength?: number): Promise<any>;
-export type PublicKey = any;
 /**
  * Class for a RSA public key
  */
@@ -34,12 +33,60 @@ export const PublicKey: {
  * Class for a RSA private key
  */
 export const PrivateKey: {
-    new (d: bigint, p: any, q: any, phi: any, publicKey: any): {
+    new (d: bigint, p: any, q: any, phi: any, publicKey: {
+        e: bigint;
+        n: bigint;
+        /**
+         * Get the bit length of the public modulo
+         * @return {number} - bit length of the public modulo
+         */
+        readonly bitLength: number;
+        /**
+         * RSA public-key encryption
+         *
+         * @param {bigint} m - a cleartext number
+         *
+         * @returns {bigint} - the encryption of m with this public key
+         */
+        encrypt(m: bigint): bigint;
+        /**
+         * RSA public-key verification
+         *
+         * @param {bigint} s - a bigint signed message
+         *
+         * @returns { bigint } - the cleartext of s with this public key
+         */
+        verify(s: bigint): bigint;
+    }): {
         d: bigint;
         _p: bigint;
         _q: bigint;
         _phi: bigint;
-        publicKey: any;
+        publicKey: {
+            e: bigint;
+            n: bigint;
+            /**
+             * Get the bit length of the public modulo
+             * @return {number} - bit length of the public modulo
+             */
+            readonly bitLength: number;
+            /**
+             * RSA public-key encryption
+             *
+             * @param {bigint} m - a cleartext number
+             *
+             * @returns {bigint} - the encryption of m with this public key
+             */
+            encrypt(m: bigint): bigint;
+            /**
+             * RSA public-key verification
+             *
+             * @param {bigint} s - a bigint signed message
+             *
+             * @returns { bigint } - the cleartext of s with this public key
+             */
+            verify(s: bigint): bigint;
+        };
         /**
          * Get the bit length of the public modulo
          * @return { number } - bit length of the public modulo
@@ -72,7 +119,31 @@ export type KeyPair = {
     /**
      * - a RSA's public key
      */
-    publicKey: any;
+    publicKey: {
+        e: bigint;
+        n: bigint;
+        /**
+         * Get the bit length of the public modulo
+         * @return {number} - bit length of the public modulo
+         */
+        readonly bitLength: number;
+        /**
+         * RSA public-key encryption
+         *
+         * @param {bigint} m - a cleartext number
+         *
+         * @returns {bigint} - the encryption of m with this public key
+         */
+        encrypt(m: bigint): bigint;
+        /**
+         * RSA public-key verification
+         *
+         * @param {bigint} s - a bigint signed message
+         *
+         * @returns { bigint } - the cleartext of s with this public key
+         */
+        verify(s: bigint): bigint;
+    };
     /**
      * - the associated RSA's private key
      */
@@ -81,7 +152,31 @@ export type KeyPair = {
         _p: bigint;
         _q: bigint;
         _phi: bigint;
-        publicKey: any;
+        publicKey: {
+            e: bigint;
+            n: bigint;
+            /**
+             * Get the bit length of the public modulo
+             * @return {number} - bit length of the public modulo
+             */
+            readonly bitLength: number;
+            /**
+             * RSA public-key encryption
+             *
+             * @param {bigint} m - a cleartext number
+             *
+             * @returns {bigint} - the encryption of m with this public key
+             */
+            encrypt(m: bigint): bigint;
+            /**
+             * RSA public-key verification
+             *
+             * @param {bigint} s - a bigint signed message
+             *
+             * @returns { bigint } - the cleartext of s with this public key
+             */
+            verify(s: bigint): bigint;
+        };
         /**
          * Get the bit length of the public modulo
          * @return { number } - bit length of the public modulo
