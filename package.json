@@ -20,6 +20,6 @@
     "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "rollup": "^2.0.6"
+    "rollup": "^2.79.2"
   }
 }
